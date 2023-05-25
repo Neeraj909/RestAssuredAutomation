@@ -58,8 +58,8 @@ public class GetGmailProfile {
       }
       @Test(priority = 2)
     public void sendMail(){
-        String msg="From : nsharma2596@gmail.com\n" +
-                "To : prahan63@gmail.com\n" +
+        String msg="From : ,mailn" +
+                "To : mail\n" +
                 "Subject: Rest Assured Test\n" +
                 "Sending for Rest Assured\n";
         String bash64EncodedMessage= Base64.getUrlEncoder().encodeToString(msg.getBytes());
