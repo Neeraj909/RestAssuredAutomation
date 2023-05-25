@@ -6,11 +6,13 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pojo.PayLoad;
+import pojo.ResponseRoot;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,6 +68,23 @@ public class SerializeAndDeSerialize {
                 .log().all()
                 .assertThat()
                 .statusCode(201);
+
+    }
+    @Test(priority = 3)
+    public void deSerializedPojo() throws JsonProcessingException {
+        ResponseRoot responseRoot= given()
+                .baseUri("https://reqres.in/api/")
+                .when()
+                .get("users/2")
+                .then()
+                .log()
+                .all()
+                .assertThat()
+                .statusCode(200).extract().response().as(ResponseRoot.class);
+        System.out.println(responseRoot.getData().getFirst_name());
+        ObjectMapper objectMapper=new ObjectMapper();
+        String response=objectMapper.writeValueAsString(responseRoot);
+        System.out.println(response);
 
     }
 

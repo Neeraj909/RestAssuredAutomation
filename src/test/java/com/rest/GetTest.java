@@ -72,8 +72,6 @@ public class GetTest {
                 .statusCode(200).extract().response();
         JsonPath path=new JsonPath(res.asString());
        System.out.println(res.asString());
-       System.out.println(res.path("data[0].first_name"));
-       System.out.println(path.get("data[0].first_name"));
     }
     @Test(priority = 4)
     public void hamrcrast_single_response(){
