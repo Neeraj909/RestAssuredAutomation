@@ -1,4 +1,4 @@
-package com.rest;
+package com.rest.api;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
