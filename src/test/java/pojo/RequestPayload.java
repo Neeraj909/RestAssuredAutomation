@@ -2,13 +2,16 @@ package pojo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.jackson.Jacksonized;
 
 import java.util.ArrayList;
 
 @Getter @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Jacksonized
 public class RequestPayload {
     public boolean collaborative;
     public String description;
