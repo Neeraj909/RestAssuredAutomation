@@ -1,10 +1,15 @@
 package com.rest.api;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apiguardian.api.API;
 import pojo.GetPlaylistRootPayload;
 
-import static com.rest.api.SpecBuilder.getRequestSpecification;
-import static com.rest.api.SpecBuilder.getResponseSpecBuilder;
+import java.util.HashMap;
+
+import static com.rest.api.Route.API_PATH;
+import static com.rest.api.Route.TOKEN;
+import static com.rest.api.SpecBuilder.*;
 import static io.restassured.RestAssured.given;
 
 
@@ -20,7 +25,6 @@ public class PlaylistApiMethodReusable {
                 assertThat().
                 statusCode(201).
                 extract().response();
-
     }
     public static Response get(String path,String token){
         return  given(getRequestSpecification()).
@@ -39,5 +43,12 @@ public class PlaylistApiMethodReusable {
                 put(path).
                 then().
                 spec(getResponseSpecBuilder()).extract().response();
+    }
+    public static Response postAccount(HashMap<String,String> formParam){
+        return given(getAccountRequestSpec()).
+                formParams(formParam).
+                when().
+                post(API_PATH+TOKEN).
+                then().spec(getResponseSpecBuilder()).extract().response();
     }
 }
