@@ -1,5 +1,6 @@
 package com.rest.spotify;
 
+import com.rest.utils.DataLoader;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import pojo.GetPlaylistRootPayload;
@@ -21,7 +22,7 @@ public class SpotifyPlayList {
     }
     @Test(priority = 2)
     public void getPlaylist(){
-        Response response=getCall("4NQWNXnHjweHKNBTUBkeJZ");
+        Response response=getCall(DataLoader.getInstance().get_playlist_id());
         assertThat(response.statusCode(),equalTo(200));
     }
 
@@ -31,7 +32,7 @@ public class SpotifyPlayList {
         getPlaylistRootPayload.setName("ANKIT DJ");
         getPlaylistRootPayload.setDescription("New Playlist");
         getPlaylistRootPayload.setMypublic(false);
-        Response response=updateCall(getPlaylistRootPayload,"4NQWNXnHjweHKNBTUBkeJZ");
+        Response response=updateCall(getPlaylistRootPayload,DataLoader.getInstance().get_update_playlist_id());
         assertThat(response.statusCode(),equalTo(200));
 
     }
