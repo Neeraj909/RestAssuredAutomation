@@ -9,7 +9,7 @@ import lombok.extern.jackson.Jacksonized;
 @Getter
 @Setter
 @Jacksonized
-@Builder
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Followers {
     public Object href;

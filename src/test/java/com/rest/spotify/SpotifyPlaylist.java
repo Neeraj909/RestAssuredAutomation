@@ -1,6 +1,7 @@
 package com.rest.spotify;
 
 import com.rest.utils.DataLoader;
+import io.qameta.allure.Description;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import pojo.RequestPayload;
@@ -25,7 +26,8 @@ public class SpotifyPlaylist {
         assertThat(actualCode,equalTo(expectedCode));
     }
 
-    @Test(priority = 1)
+    @Description
+    @Test(priority = 1,description = "user able to create the playlist")
     public void createPlaylist(){
         RequestPayload requestPayload =getPlaylistRootPayload("Neeraj DJ","New Playlist",false);
         Response response=postCall(requestPayload);

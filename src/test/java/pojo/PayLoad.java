@@ -10,7 +10,7 @@ import lombok.extern.jackson.Jacksonized;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Jacksonized
-@Builder
+
 public class PayLoad {
     private  String name;
     private  String job;
