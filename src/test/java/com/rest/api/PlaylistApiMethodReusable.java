@@ -14,7 +14,7 @@ public class PlaylistApiMethodReusable {
     public static Response post(String path,String token,Object request){
        return given(getRequestSpecification()).
                 body(request).
-                header("Authorization","Bearer "+ token).
+               auth().oauth2(token).
                 when().
                 post(path).
                 then().
@@ -25,7 +25,7 @@ public class PlaylistApiMethodReusable {
     }
     public static Response get(String path,String token){
         return  given(getRequestSpecification()).
-                header("Authorization","Bearer "+ token).
+                auth().oauth2(token).
                 when().
                 get(path).
                 then().
@@ -35,7 +35,7 @@ public class PlaylistApiMethodReusable {
     public static Response put(String path,String token,Object request){
         return given(getRequestSpecification()).
                 body(request).
-                header("Authorization","Bearer "+ token).
+                auth().oauth2(token).
                 when().
                 put(path).
                 then().

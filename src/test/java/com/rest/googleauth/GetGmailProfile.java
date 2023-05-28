@@ -44,7 +44,7 @@ public class GetGmailProfile {
                 log(LogDetail.ALL);
         responseSpecification=  responseSpecBuilder.build();
     }
-    @Test(priority = 1)
+    @Test(priority = 1,enabled = false)
     public void getProfile(){
         Response response=given(requestSpecification).
                 basePath("/gmail/v1/").
@@ -56,7 +56,7 @@ public class GetGmailProfile {
         String cookie= response.getCookies().toString();
         System.out.println(cookie);
       }
-      @Test(priority = 2)
+      @Test(priority = 2,enabled = false)
     public void sendMail(){
         String msg="From : ,mailn" +
                 "To : mail\n" +

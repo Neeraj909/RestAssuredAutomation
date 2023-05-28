@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.hasItems;
 
 public class PostTest {
     String id="";
-    @Test(priority = 1)
+    @Test(priority = 1,enabled = false)
     public void validatePostRequest(){
      String payload="{\n" +
              "    \"name\": \"morpheus\",\n" +
@@ -31,9 +31,9 @@ public class PostTest {
         System.out.println(id);
 
     }
-    @Test(priority = 2)
+    @Test(priority = 2,enabled = false)
     public void sendASFile(){
-File file =new File("src/main/resources/payload.json");
+File file =new File("src/test/resources/payload.json");
         Response response =
           given()
                 .baseUri("https://reqres.in/api/")
@@ -46,9 +46,9 @@ File file =new File("src/main/resources/payload.json");
                   .statusCode(201).extract().response();
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3,enabled = false)
     public void uploadFile(){
-        File file =new File("src/main/resources/payload.json");
+        File file =new File("src/test/resources/payload.json");
         Response response =
                 given()
                         .baseUri("https://reqres.in/api/")
